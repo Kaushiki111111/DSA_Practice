@@ -1,0 +1,8 @@
+for(int x : temp) { sum += x; } is defined as being equivalent to:
+
+for ( auto it = begin(temp); it != end(temp); ++it ) 
+{ 
+    int x = *it;
+    sum += x;
+}
+// value comes to x not the index
