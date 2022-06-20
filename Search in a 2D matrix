@@ -1,0 +1,30 @@
+# start from top right and search
+#dont go with top left or bottom right  as we will be clueless where to go which row to go or col to go 
+#bottom left also dont start  as it will [-1,3] and target ==3 so condition will fail(onitial stopping condn)
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+         int m=matrix.size();
+            int n=matrix[0].size();
+      if(m==1 && n==1) 
+      {
+          if(matrix[m-1][n-1]==target)
+              return true;
+          else
+              return false;
+      }
+        int rowi=0;
+      int coli=n-1; 
+        //serach from the top right //cant start with bottom left as[-1,3]and target ==3 toh voh condition false hojaegi
+      while(rowi<=m-1 && coli>=0)  
+      {
+          if(target==matrix[rowi][coli])
+              return true;
+          if(target>matrix[rowi][coli])
+              rowi++;
+          else
+              coli--;
+      }
+     return false;
+    }
+};
