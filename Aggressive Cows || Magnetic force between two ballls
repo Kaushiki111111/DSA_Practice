@@ -1,0 +1,45 @@
+#catch here is put low=0; high= a large number
+ bool CanPLACE(vector<int>&position,int m,int n,int dist)
+    {
+        int ball=position[0];
+        int count=1;
+        for(int i=1;i<n;i++)
+        {
+            if(position[i]-ball >=dist)
+            {
+                count++;
+                ball=position[i];
+            }
+            if(count==m)
+                return true;
+                
+        }
+        return false;
+    }
+    int maxDistance(vector<int>& position, int m)
+    {
+        //[1,2,3,4,7]
+        sort(position.begin(),position.end());
+        int res;
+           int low=0;
+        int n=position.size();
+        int high=10000000000;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if( CanPLACE(position,m,n,mid))
+            {
+                res=mid;
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
+        }
+        return res;
+        
+    }
+    
+   
+}; 
