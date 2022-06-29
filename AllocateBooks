@@ -1,0 +1,50 @@
+bool isPossible(vector<int> &A, int barrier, int students) 
+{
+    int stds = 0;
+    int sumbarrier = 0; 
+    for(int i = 0;i<A.size();i++)
+     {
+        if(sumbarrier + A[i] > barrier) 
+        {
+            
+            stds++; 
+            sumbarrier = A[i];
+            if(sumbarrier > barrier) return false;
+           
+        }
+        else {
+            sumbarrier += A[i];
+        }
+    }
+    if(stds < students) 
+    return true; 
+    return false; 
+}
+int Solution::books(vector<int> &A, int B) {
+    if(B > A.size()) return -1; 
+    
+    int low =  A[0];
+    int high = 0;
+    int num=A.size();
+    for(int i = 0;i<num;i++)
+     {
+        high = high + A[i]; //high me sum dalenge
+        low = min(low, A[i]); //low me max(arr)
+    }
+    int res = -1; 
+    while(low <= high) 
+    {
+        int mid = (low + high) >> 1; 
+        
+        if(isPossible(A, mid, B)) {
+            res = mid; 
+            high = mid - 1; //kitna min jaskte ya shrink krskte apne range ko
+        }
+        else {
+            low = mid + 1; 
+        }
+    }
+  
+    return res; 
+}
+
