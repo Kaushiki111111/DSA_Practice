@@ -6,9 +6,16 @@ int min_end=nums[0];
 for(int i=1;i<nums.size();i++)
 {
 int tmp=max_end;
-max_end=max(nums[i],nums[i]* max_end,nums[i]*min_end);
-min_end=min(nums[i],nums[i]*max_end,nums[i]*min_end);
+if(nums[i]<0)
+  swap(max_end,min_end);
+
+
+max_end=max(nums[i],max_end*nums[i]);
+min_end=min(nums[i],min_end*nums[i]);
+ans=max(max_end,ans);
 
 }
-return max(max_end,ans);
+return ans;
 }
+
+
