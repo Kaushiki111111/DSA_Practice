@@ -1,0 +1,22 @@
+vector<int> twosum(vector<int>& nums,int target)
+{
+[1,2,7,3,4]  target=4
+vector<int> ans;
+int n=nums.size();
+unordered_map <int,int> mpp;
+int i=0;
+while(i<n)
+{
+if(mpp.find(target-nums[i])!=mpp.end())
+{
+ans.push_back(mpp[target-nums[i]]);
+ans.push_back(i);
+break;
+}
+
+mpp[nums[i]=i;
+}
+return ans;
+
+
+}
