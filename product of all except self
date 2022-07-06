@@ -1,0 +1,23 @@
+//[1,2,3,4,0]    -> [0,0,0,0,24]
+//By using suffix and prefix of the sum 
+ //optimised 
+ //brute force by taking product of all and then divide by self
+ 
+vector<int> PdtExceptself(vector<int>& nums)
+{  
+int n=nums.size();
+vector<int> ans;
+for(int i=0,suf=1,pre=1;i<n;i++)
+{
+ans[i]*=pre;
+pre*=nums[i];
+ans[n-i-1]*=suf;
+suf*=nums[n-i-1];
+}
+return ans;
+
+
+
+
+
+}
