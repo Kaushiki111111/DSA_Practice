@@ -1,0 +1,20 @@
+vector<vector<int>> subsets(vector<int> & nums)
+{
+  int n=nums.size();
+  if(n==0)return {};  
+  vector<vector<int>> ans;
+  vector<int> res;
+  int count=1<<n;
+  for(int i=0;i<count;i++)
+  {
+  vector<int> res;
+  for(int j=0;j<n;j++)
+  {
+  if(i&(1<<j)
+  res.push_back( nums[j]);
+  }
+  
+}
+
+return ans;
+}
